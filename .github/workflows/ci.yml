@@ -11,15 +11,15 @@ on:
 env:
   SCRIPT_REPO: ${{ github.repository }}
   SCRIPT_REF: ${{ github.ref_name }}
-  #UBOOT_REPO: chem4111/u-boot-onecloud
-  UBOOT_REPO: hzyitc/u-boot
+  UBOOT_REPO: chem4111/u-boot
+  #UBOOT_REPO: hzyitc/u-boot
   UBOOT_RELEASE: latest
   UBOOT_BURNIMG: eMMC.burn.img
   ARMBIAN_REPO: armbian/build
   ARMBIAN_REF: main
   # PATCHES: 4077,5076
   #PATCHES: 5076
-  PATCHES_DISABLED: 5082
+  #PATCHES_DISABLED: 5082
 
 permissions:
   contents: write
@@ -195,7 +195,7 @@ jobs:
 
   build:
     # name: Build ${{ matrix.RELEASE }}-${{ matrix.BRANCH }}-${{ matrix.TYPE == 'desktop' && matrix.DESKTOP_ENVIRONMENT || matrix.TYPE }}
-    name: Build ${{ matrix.RELEASE }}-${{ matrix.BRANCH }}-${ matrix.TYPE }
+    name: Build ${{ matrix.RELEASE }}-${{ matrix.BRANCH }}-${{ matrix.TYPE }}
     needs: [ prepare, build-debs ]
     runs-on: ubuntu-22.04
     strategy:
